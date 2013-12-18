@@ -600,6 +600,24 @@ default value: false \- users may not query or select jobs owned by other users.
 .if !\n(Pb .ig Ig
 [internal type: boolean]
 .Ig
+.Al record_job_info
+If set, when the job is purged by the server after it exits, it writes out its
+relevant attributes - name, ID, script if record_job_script is set, and the job's
+logs. Format: boolean. 
+Requires full manager privilege to set or alter.
+Default value: FALSE
+.if !\n(Pb .ig Ig
+[internal type: boolean]
+.Ig
+.Al record_job_script
+If set, when the job outputs its information to file due to record_job_info, it 
+will also write out its submission script to the job's log file. 
+Format: boolean.
+Requires full manager privilege to set or alter.
+Default value: FALSE
+.if !\n(Pb .ig Ig
+[internal type: boolean]
+.Ig
 .Al "resources_available"
 The list of resource and amounts available to jobs run by this server.
 The sum of the resource of each type used by all jobs running by this server
