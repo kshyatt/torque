@@ -492,6 +492,24 @@ Format: integer; default value: none.
 .if !\n(Pb .ig Ig
 [internal type: integer]
 .Ig
+.Al max_threads
+Sets the maximum number of threads in the TORQUE server threadpool. If this is 
+equal to the minimum number, the thread count is static. Otherwise, TORQUE can
+dynamically respond to load and spawn more threads as required, until the maximum
+value is reached. Format: integer; default value: 300.
+Requires full manager privilege to set or alter.
+.if !\n(Pb .ig Ig
+[internal type: integer]
+.Ig
+.Al min_threads
+Sets the minimum number of threads in the TORQUE server threadpool. This is 
+the default number of threads the pool will use when the PBS server is 
+initialized. 
+Format: integer; default value: 10.
+Requires full manager privilege to set or alter.
+.if !\n(Pb .ig Ig
+[internal type: integer]
+.Ig
 .Al mom_job_sync
 Enables the "job sync on MOM" feature.   When MOMs send a status
 update, and it includes a list of jobs, server will issue job deletes for any
@@ -724,6 +742,16 @@ Starts.\*U
 .Al tcp_timeout
 Specifies the pbs_server to pbs_mom TCP socket timeout in seconds.
 Format: integer; default value: 6.
+.if !\n(Pb .ig Ig
+[internal type: integer]
+.Ig
+.Al thread_idle_seconds
+The number of seconds a thread can remain doing no work before it is removed
+from the threadpool (thus decreasing the size of the pool by one). It is 
+possible to set this value (the default) so that threads are never removed. 
+The number of threads will decrease until min_threads is reached. Format: 
+integer, default value: -1 (infinity - threads are not removed by default).
+Requires full manager privileges to set or alter.
 .if !\n(Pb .ig Ig
 [internal type: integer]
 .Ig
