@@ -294,6 +294,11 @@ Minimum value: 4 seconds  (PBS_JOBSTAT_MIN in server_limits.h)
 .if !\n(Pb .ig Ig
 [internal type: integer]
 .Ig
+.Al job_sync_timeout
+Controls how long the server will wait after a kill job is sent to the
+MOM before sending another.
+Format: integer; default value: 60.
+Requires full manager privilege to set or alter. 
 .Al keep_completed
 Number of seconds to retain completed jobs in the C state.  This is overridden
 by the execution queue attribute of the same name.
