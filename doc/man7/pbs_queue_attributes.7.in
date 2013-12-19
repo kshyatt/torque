@@ -236,6 +236,10 @@ This attribute must be explicitly set.
 .if !\n(Pb .ig Ig
 [internal type: string]
 .Ig
+.Al required_login_property
+Allows setting of a login property on any job submitted to the queue.
+Format: string; default value: empty.
+.Ig
 .Al resources_max
 The maximum amount of each resource which can be requested by a single job
 in this queue.  The queue value supersedes any server wide maximum limit.
@@ -262,7 +266,7 @@ job will unlimited resource usage.
 .if !\n(Pb .ig Ig
 [internal type: resource]
 .Ig
-.Al started\ 
+.Al started 
 Jobs may be scheduled for execution from this queue.
 When false, the queue is considered \*Qstopped.\*U
 Advisory to the Scheduler, not enforced by the server.
