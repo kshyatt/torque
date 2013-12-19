@@ -593,6 +593,17 @@ Default value: unset \- assigned to nodes as nodes in order that were declared.
 Adds a domainname to node names before IP lookups.
 Format: string; default value: none.
 .Ig
+.Al nppcu
+Tells ALPS how to handle server Hyperthreaded cores. When the server nppcu value is:
+.IP 0 
+We let ALPS choose if it will use Hyper-Threaded cores or not (this reports all cores to ALPS).
+.IP 1
+Don't let ALPS use Hyper-Threaded cores at all (report only the physical cores).
+.IP 2
+Force ALPS to use Hyper-Threaded cores (report all the cores).
+Format: integer; default value: 1.
+Requires full manager privilege to set or alter. 
+.Ig
 .Al np_default
 np_default allows the administrator to unify the number of processors (np) on all nodes. The value can be dynamically changed. A value of 0 tells pbs_server to use the value of np found in the nodes file. The maximum value is 32767.
 Format: integer; default value: not used.
