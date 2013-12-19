@@ -194,6 +194,17 @@ Number of jobs to clone in a batch for a job array.
 Format: integer; default value: 256.
 .if !\n(Pb .ig Ig
 [internal type: integer]
+.Ig
+.Al cray_enabled
+Puts the server in Cray mode. This turns on compatability flags for ALPS and
+has the server copy nppcu values to jobs. It also allows TORQUE to handle
+heterogeneous systems (both Cray and non-Cray nodes) in a graceful way. Setting
+this to TRUE allows interactive jobs to roam around nodes: see 
+interactive_jobs_can_roam.  
+Format: boolean; default value: FALSE.
+Requires full manager privilege to set or alter. 
+.if !\n(Pb .ig Ig
+[internal type: boolean]
 .Ig 
 .Al credential_lifetime
 The number of a seconds that a client connection may stay connected without re-authenticating. Default is 3600 seconds.
@@ -244,6 +255,12 @@ resources_default/min/max.  Format: list; default value: none.
 .if !\n(Pb .ig Ig
 [internal type: list]
 .Ig
+.Al interactive_jobs_can_roam
+NOTE: this only has effect if cray_enabled is set TRUE. 
+Normally, interactive (qsub -I) jobs have their login node as the mother superior.
+With this flag set TRUE, they may have any login node as mother superior.
+Format: boolean; default value: false.
+Requires full manager privilege to set or alter.
 .Al job_force_cancel_time
 If configured, number of seconds after a delete where a job will be purged by the server. If not configured, no such thing happens.
 Format: integer; default value: not used.
